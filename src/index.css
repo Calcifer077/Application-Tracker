@@ -3,3 +3,21 @@
   margin: 0;
   box-sizing: border-box;
 }
+
+:root {
+  --color-white: white;
+  --color-main-background: #f1f3f5;
+
+  --color-main-text-color: #212529;
+  --color-text-color: #343a40;
+
+  --color-border: #868e96;
+
+  --color-button-text-normal: #f1f3f5;
+  --color-button-text-hover: #f8f9fa;
+
+  --color-button-background: #2f9e44;
+  --color-button-background-hover: #37b24d;
+
+  --color-hover-input: #2f9e44;
+}
