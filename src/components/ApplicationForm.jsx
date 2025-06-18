@@ -7,23 +7,37 @@ import FormRow from "../ui/FormRow";
 import Select from "../ui/Select";
 import Button from "../ui/Button";
 import { useCreateApplication } from "./useCreateApplication";
+import { IoMdAdd } from "react-icons/io";
 
 const StyledMainDiv = styled.div`
   padding: 20px;
-  background-color: #f5f5f4;
+  background-color: var(--color-white);
   border-radius: 10px;
   margin-top: 12px;
   margin-bottom: 12px;
 `;
 
+const StyledHeading = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
 const Heading = styled.h1`
   font-size: 26px;
-  color: oklch(27.8% 0.033 256.848);
+  color: var(--color-main-text-color);
+`;
+
+const Icon = styled.span`
+  font-size: 26px;
+  color: var(--color-main-text-color);
+
+  display: flex;
+  align-items: center;
 `;
 
 const P = styled.p`
   margin-top: 5px;
-  color: oklch(27.8% 0.033 256.848);
+  color: var(--color-text-color);
 `;
 
 const Form = styled.form`
@@ -42,7 +56,6 @@ function ApplicationForm() {
   }
 
   function onSubmit({ company, date_applied, platform, url, notes }) {
-    console.log(status);
     const newApplication = {
       company,
       date_applied,
@@ -58,7 +71,12 @@ function ApplicationForm() {
   // Have to add a way to create new applications
   return (
     <StyledMainDiv>
-      <Heading>Add New Application</Heading>
+      <StyledHeading>
+        <Icon>
+          <IoMdAdd />
+        </Icon>
+        <Heading>&nbsp;Add New Application</Heading>
+      </StyledHeading>
       <P>Record details about your latest job or internship application</P>
 
       <Form onSubmit={handleSubmit(onSubmit)}>

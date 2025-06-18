@@ -10,11 +10,11 @@ const Input = styled.input`
   transition: border-color 0.2s;
 
   &:focus {
-    border-color: #4f46e5; /* Indigo-600 */
+    border-color: var(--color-hover-input);
   }
 
   &::placeholder {
-    color: #aaa;
+    color: var(--color-text-color);
   }
 `;
 

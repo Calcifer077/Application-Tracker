@@ -4,7 +4,7 @@ const StyledDiv = styled.div`
   padding: 20px 60px 20px 20px;
   display: grid;
   grid-template-columns: 80px repeat(5, 1fr);
-  border-bottom: 1.5px solid #9ca3af;
+  border-bottom: 1.5px solid var(--color-border);
   align-items: center;
 `;
 

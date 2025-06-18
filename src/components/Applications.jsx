@@ -6,20 +6,20 @@ import SpinnerMini from "../ui/SpinnerMini";
 
 const StyledMainDiv = styled.div`
   padding: 20px;
-  background-color: #f5f5f4;
+  background-color: var(--color-white);
   border-radius: 10px;
-  margin-top: 12px;
+  margin-top: 20px;
   margin-bottom: 12px;
 `;
 
 const Heading = styled.h1`
   font-size: 26px;
-  color: oklch(27.8% 0.033 256.848);
+  color: var(--color-main-text-color);
 `;
 
 const P = styled.p`
   margin-top: 5px;
-  color: oklch(27.8% 0.033 256.848);
+  color: var(--color-text-color);
 `;
 
 function Applications() {
@@ -35,9 +35,9 @@ function Applications() {
       {isLoading && <SpinnerMini />}
 
       {!isLoading &&
-        applications.map((application) => (
+        applications.map((application, index) => (
           <ApplicationDetails
-            index={application.id}
+            index={++index}
             company={application.company}
             platform={application.platform}
             status={application.status}

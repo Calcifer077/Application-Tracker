@@ -7,7 +7,7 @@ const MainDiv = styled.div`
 const H1 = styled.h1`
   text-align: center;
   font-size: 50px;
-  color: oklch(27.8% 0.033 256.848);
+  color: #var(--color-main-text-color);
 `;
 
 function Heading() {

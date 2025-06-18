@@ -8,16 +8,16 @@ const sizes = {
     text-align: center;
     text-transform: uppercase;
     font-size: 16px;
-    border: 1px solid #ccc;
-    color: #f4f4f5;
-    background-color: #15803d;
+    border: 1px solid var(--color-border);
+    color: var(--color-button-text-normal);
+    background-color: var(--color-button-background);
     font-weight: 600;
     letter-spacing: 0.3px;
     transition: background-color 0.3s, color 0.3s;
 
     &:hover {
-      background-color: #22c55e;
-      color: #fafaf9;
+      background-color: var(--color-button-background-hover);
+      color: var(--color-button-text-hover);
     }
   `,
 

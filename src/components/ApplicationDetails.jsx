@@ -7,7 +7,7 @@ const StyledDiv = styled.div`
   display: grid;
   grid-template-columns: 80px repeat(5, 1fr) 40px;
   align-items: center;
-  border-bottom: 1px solid #e5e7eb;
+  border-bottom: 1px solid var(--color-border);
   font-size: 15px;
 `;
 
@@ -15,7 +15,7 @@ const Cell = styled.span`
   display: flex;
   align-items: center;
   gap: 6px;
-  color: #374151;
+  color: var(--color-text-color);
   font-weight: 600;
   text-transform: capitalize;
 `;
@@ -24,15 +24,14 @@ const IconButton = styled.span`
   display: flex;
   justify-content: center;
   cursor: pointer;
-  color: #6b7280;
+  color: var(--color-text-color);
 
   &:hover {
-    color: #374151;
+    color: var(--color-main-text-color);
   }
 `;
 
 function ApplicationDetails({ index, company, platform, status, date, notes }) {
-  console.log(index, 1);
   return (
     <StyledDiv>
       <Cell>{index}</Cell>

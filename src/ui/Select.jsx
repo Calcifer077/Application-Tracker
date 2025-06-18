@@ -10,7 +10,7 @@ const StyledSelect = styled.select`
   font-size: 16px;
   transition: border-color 0.2s;
   &:focus {
-    border-color: #4f46e5; /* Indigo-600 */
+    border-color: var(--color-hover-input);
   }
 `;
 
