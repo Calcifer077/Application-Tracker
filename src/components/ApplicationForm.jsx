@@ -13,8 +13,7 @@ const StyledMainDiv = styled.div`
   padding: 20px;
   background-color: var(--color-white);
   border-radius: 10px;
-  margin-top: 12px;
-  margin-bottom: 12px;
+  margin: 20px;
 `;
 
 const StyledHeading = styled.div`

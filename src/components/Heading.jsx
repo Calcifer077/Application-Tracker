@@ -7,7 +7,9 @@ const MainDiv = styled.div`
 const H1 = styled.h1`
   text-align: center;
   font-size: 50px;
-  color: #var(--color-main-text-color);
+  padding-top: 20px;
+  padding-bottom: 20px;
+  color: var(--color-main-text-color);
 `;
 
 function Heading() {
