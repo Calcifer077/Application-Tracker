@@ -1,9 +1,11 @@
 import styled from "styled-components";
-import ApplicationForm from "./components/ApplicationForm";
-import Heading from "./components/Heading";
-import Applications from "./components/Applications";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import { Toaster } from "react-hot-toast";
+
+import Heading from "./components/Heading";
+import Applications from "./components/Applications";
+import ApplicationForm from "./components/ApplicationForm";
 
 const StyledDiv = styled.div`
   background-color: var(--color-main-background);
@@ -24,6 +26,20 @@ function App() {
         <ApplicationForm />
         <Applications />
       </StyledDiv>
+      <Toaster
+        position="top-center"
+        containerStyle={{ margin: "8px" }}
+        toastOptions={{
+          duration: "2000",
+          style: {
+            fontSize: "16px",
+            fontWeight: "bold",
+            maxWidth: "500px",
+            padding: "16px 24px",
+            borderColor: "var(--color-border)",
+          },
+        }}
+      />
     </QueryClientProvider>
   );
 }
