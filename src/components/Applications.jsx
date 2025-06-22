@@ -36,6 +36,7 @@ function Applications() {
       {!isLoading &&
         applications.map((application, index) => (
           <ApplicationDetails
+            id={application.id}
             index={++index}
             company={application.company}
             platform={application.platform}

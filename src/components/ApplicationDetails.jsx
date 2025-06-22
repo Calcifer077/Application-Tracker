@@ -1,5 +1,6 @@
 import { MdOutlineDateRange } from "react-icons/md";
 import { SlOptionsVertical } from "react-icons/sl";
+import DropdownApplicationStatus from "./DropdownApplicationStatus";
 import styled from "styled-components";
 
 const StyledDiv = styled.div`
@@ -20,6 +21,13 @@ const Cell = styled.span`
   text-transform: capitalize;
 `;
 
+const StatusCell = styled.span`
+  background-color: var(--color-cell-background-color);
+  width: fit-content;
+  padding: 4px 8px;
+  border-radius: 6px;
+`;
+
 const IconButton = styled.span`
   display: flex;
   justify-content: center;
@@ -31,13 +39,32 @@ const IconButton = styled.span`
   }
 `;
 
-function ApplicationDetails({ index, company, platform, status, date, notes }) {
+function ApplicationDetails({
+  id,
+  index,
+  company,
+  platform,
+  status,
+  date,
+  notes,
+}) {
   return (
     <StyledDiv>
       <Cell>{index}</Cell>
       <Cell>{company}</Cell>
       <Cell>{platform}</Cell>
-      <Cell>{status}</Cell>
+
+      <DropdownApplicationStatus
+        status={status}
+        items={[
+          { value: "pending", label: "Pending" },
+          { value: "rejected", label: "Rejected" },
+          { value: "selected", label: "Selected" },
+          { value: "interview", label: "Interview Scheduled" },
+        ]}
+        applicationId={id}
+      />
+
       <Cell>
         <MdOutlineDateRange />
         {date}

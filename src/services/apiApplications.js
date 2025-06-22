@@ -23,3 +23,20 @@ export async function createApplication(application) {
   console.log(data);
   return data;
 }
+
+export async function updateApplicationStatus(applicationId, status) {
+  const { data: updatedApplication, error } = await supabase
+    .from("Applications")
+    .update({ status: status })
+    .eq("id", applicationId)
+    .select();
+
+  console.log(applicationId, status);
+  if (error) {
+    throw new Error("Your application could not be updated. Please try again");
+  }
+
+  console.log(updatedApplication);
+
+  return updatedApplication;
+}

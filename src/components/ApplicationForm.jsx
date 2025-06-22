@@ -118,6 +118,8 @@ function ApplicationForm() {
         <FormRow label="Response Status">
           <Select
             value={status}
+            type="form"
+            disabled={isLoading}
             options={[
               { value: "pending", label: "Pending" },
               { value: "rejected", label: "Rejected" },
