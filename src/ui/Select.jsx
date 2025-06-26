@@ -40,6 +40,32 @@ const StyledSelectDetails = styled.select`
   }
 `;
 
+const StyledSelectOperations = styled.select`
+  padding: 4px 6px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: var(--color-filter-not-active);
+  max-width: 160px;
+  font-weight: 500;
+  color: #1f2937;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+
+  &:hover {
+    border-color: #999;
+  }
+
+  &:focus {
+    border-color: var(--color-green);
+    box-shadow: 0 0 0 2px rgba(34, 197, 94, 0.3); /* green glow */
+  }
+
+  option {
+    background-color: white;
+    color: #1f2937;
+  }
+`;
+
 function Select({ options, value, onChange, type, disabled }) {
   if (type === "form") {
     return (
@@ -51,7 +77,7 @@ function Select({ options, value, onChange, type, disabled }) {
         ))}
       </StyledSelectForm>
     );
-  } else {
+  } else if (type === "details") {
     return (
       <StyledSelectDetails
         value={value}
@@ -64,6 +90,20 @@ function Select({ options, value, onChange, type, disabled }) {
           </option>
         ))}
       </StyledSelectDetails>
+    );
+  } else {
+    return (
+      <StyledSelectOperations
+        value={value}
+        onChange={onChange}
+        disabled={disabled}
+      >
+        {options.map((option) => (
+          <option value={option.value} key={option.value}>
+            {option.label}
+          </option>
+        ))}
+      </StyledSelectOperations>
     );
   }
 }

@@ -25,4 +25,8 @@
   --color-anchor-text-hover: #3b5bdb;
 
   --color-cell-background-color: #e9ecef;
+
+  --color-filter-not-active: #f1f3f5;
+  --color-filter-active: #dee2e6;
+  --color-filter-not-active-text: #212529;
 }

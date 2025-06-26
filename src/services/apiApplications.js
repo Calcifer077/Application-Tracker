@@ -1,7 +1,21 @@
 import supabase from "./supabase";
 
-export async function getApplications() {
-  let { data, error } = await supabase.from("Applications").select("*");
+export async function getApplications({ filter, sort }) {
+  let query = supabase.from("Applications").select("*");
+
+  if (filter) {
+    query = query[filter.method || "eq"](filter.field, filter.value);
+  }
+
+  console.log(sort);
+
+  if (sort) {
+    query = query.order(sort.field, {
+      ascending: sort.direction === "asc" ? true : false,
+    });
+  }
+
+  const { data, error } = await query;
 
   if (error) {
     throw new Error("Applications could not be loaded");

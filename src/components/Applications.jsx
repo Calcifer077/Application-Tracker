@@ -3,6 +3,7 @@ import ApplicationRow from "./ApplicationRow";
 import ApplicationDetails from "./ApplicationDetails";
 import { useApplications } from "./useApplications";
 import SpinnerMini from "../ui/SpinnerMini";
+import ApplicationOperations from "./ApplicationOperations";
 
 const StyledMainDiv = styled.div`
   padding: 20px;
@@ -21,19 +22,34 @@ const P = styled.p`
   color: var(--color-text-color);
 `;
 
+const StyledFlexDiv = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
 function Applications() {
   const { isLoading, applications } = useApplications();
 
   return (
     <StyledMainDiv>
-      <Heading>Your Applications</Heading>
-      <P>Track status off all your Applications</P>
+      <StyledFlexDiv>
+        <div>
+          <Heading>Your Applications</Heading>
+          <P>Track status off all your Applications</P>
+        </div>
+
+        {/* Add filtering and sorting feature */}
+        <ApplicationOperations />
+      </StyledFlexDiv>
 
       <ApplicationRow />
 
       {isLoading && <SpinnerMini />}
 
+      {!isLoading && !applications && <p>No applications were found!</p>}
+
       {!isLoading &&
+        applications &&
         applications.map((application, index) => (
           <ApplicationDetails
             id={application.id}
