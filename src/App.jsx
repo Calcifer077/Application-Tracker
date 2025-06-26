@@ -6,6 +6,7 @@ import { Toaster } from "react-hot-toast";
 import Heading from "./components/Heading";
 import Applications from "./components/Applications";
 import ApplicationForm from "./components/ApplicationForm";
+import { BrowserRouter } from "react-router-dom";
 
 const StyledDiv = styled.div`
   background-color: var(--color-main-background);
@@ -21,11 +22,14 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <ReactQueryDevtools initialIsOpen={false} />
-      <StyledDiv>
-        <Heading />
-        <ApplicationForm />
-        <Applications />
-      </StyledDiv>
+
+      <BrowserRouter>
+        <StyledDiv>
+          <Heading />
+          <ApplicationForm />
+          <Applications />
+        </StyledDiv>
+      </BrowserRouter>
       <Toaster
         position="top-center"
         containerStyle={{ margin: "8px" }}
