@@ -43,7 +43,8 @@ const StyledSelectDetails = styled.select`
 const StyledSelectOperations = styled.select`
   padding: 4px 6px;
   border: 1px solid #ccc;
-  border-radius: 8px;
+  height: 36px;
+  border-radius: 4px;
   background-color: var(--color-filter-not-active);
   max-width: 160px;
   font-weight: 500;
