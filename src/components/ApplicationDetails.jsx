@@ -39,18 +39,10 @@ const IconButton = styled.span`
   }
 `;
 
-function ApplicationDetails({
-  id,
-  index,
-  company,
-  platform,
-  status,
-  date,
-  notes,
-}) {
+function ApplicationDetails({ id, company, platform, status, date, notes }) {
   return (
     <StyledDiv>
-      <Cell>{index}</Cell>
+      <Cell>{id}</Cell>
       <Cell>{company}</Cell>
       <Cell>{platform}</Cell>
 

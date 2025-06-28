@@ -18,7 +18,7 @@ const Span = styled.span`
 function ApplicationRow() {
   return (
     <StyledDiv>
-      <Span>Index</Span>
+      <Span>ID</Span>
       <Span>Company</Span>
       <Span>Platform</Span>
       <Span>Status</Span>
