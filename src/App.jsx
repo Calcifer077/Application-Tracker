@@ -34,7 +34,7 @@ function App() {
         position="top-center"
         containerStyle={{ margin: "8px" }}
         toastOptions={{
-          duration: "2000",
+          duration: "1000",
           style: {
             fontSize: "16px",
             fontWeight: "bold",
