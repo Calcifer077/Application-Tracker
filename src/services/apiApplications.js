@@ -1,13 +1,13 @@
 import supabase from "./supabase";
 
-export async function getApplications({ filter, sort }) {
-  let query = supabase.from("Applications").select("*");
+const PAGE_COUNT = 5;
+
+export async function getApplications({ filter, sort, page }) {
+  let query = supabase.from("Applications").select("*", { count: "exact" });
 
   if (filter) {
     query = query[filter.method || "eq"](filter.field, filter.value);
   }
-
-  console.log(sort);
 
   if (sort) {
     query = query.order(sort.field, {
@@ -15,13 +15,20 @@ export async function getApplications({ filter, sort }) {
     });
   }
 
-  const { data, error } = await query;
+  if (page) {
+    const from = PAGE_COUNT * (page - 1);
+    const to = from + PAGE_COUNT - 1;
+
+    query = query.range(from, to);
+  }
+
+  const { data, error, count } = await query;
 
   if (error) {
     throw new Error("Applications could not be loaded");
   }
 
-  return data;
+  return { data, count };
 }
 
 export async function createApplication(application) {

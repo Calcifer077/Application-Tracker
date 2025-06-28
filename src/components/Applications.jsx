@@ -4,6 +4,7 @@ import ApplicationDetails from "./ApplicationDetails";
 import { useApplications } from "./useApplications";
 import SpinnerMini from "../ui/SpinnerMini";
 import ApplicationOperations from "./ApplicationOperations";
+import Pagination from "../ui/Pagination";
 
 const StyledMainDiv = styled.div`
   padding: 20px;
@@ -28,7 +29,7 @@ const StyledFlexDiv = styled.div`
 `;
 
 function Applications() {
-  const { isLoading, applications } = useApplications();
+  const { isLoading, applications, count } = useApplications();
 
   return (
     <StyledMainDiv>
@@ -50,10 +51,9 @@ function Applications() {
 
       {!isLoading &&
         applications &&
-        applications.map((application, index) => (
+        applications.map((application) => (
           <ApplicationDetails
             id={application.id}
-            index={++index}
             company={application.company}
             platform={application.platform}
             status={application.status}
@@ -62,6 +62,8 @@ function Applications() {
             key={application.id}
           />
         ))}
+
+      {!isLoading && applications && <Pagination pages={count} />}
     </StyledMainDiv>
   );
 }

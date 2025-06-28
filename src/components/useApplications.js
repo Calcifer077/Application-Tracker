@@ -1,8 +1,11 @@
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { getApplications } from "../services/apiApplications";
 import { useSearchParams } from "react-router-dom";
 
+const PAGE_COUNT = 5;
+
 export function useApplications() {
+  const queryClient = useQueryClient();
   const [searchParams] = useSearchParams();
 
   const filterValue = searchParams.get("status");
@@ -21,10 +24,30 @@ export function useApplications() {
         direction: sortBy.split("_").pop(),
       };
 
-  const { isLoading, data: applications } = useQuery({
-    queryKey: ["applications", filter, sort],
-    queryFn: () => getApplications({ filter, sort }),
+  const page = !searchParams.get("page") ? 1 : Number(searchParams.get("page"));
+
+  const { isLoading, data: { data: applications, count } = {} } = useQuery({
+    queryKey: ["applications", filter, sort, page],
+    queryFn: () => getApplications({ filter, sort, page }),
   });
 
-  return { isLoading, applications };
+  // PREFETCHING
+
+  const pageCount = Math.ceil(count / PAGE_COUNT);
+
+  if (page < pageCount) {
+    queryClient.prefetchQuery({
+      queryKey: ["applications", filter, sort, page + 1],
+      queryFn: () => getApplications({ filter, sort, page: page + 1 }),
+    });
+  }
+
+  if (page > 1) {
+    queryClient.prefetchQuery({
+      queryKey: ["applications", filter, sort, page - 1],
+      queryFn: () => getApplications({ filter, sort, page: page - 1 }),
+    });
+  }
+
+  return { isLoading, applications, count };
 }
