@@ -1,6 +1,7 @@
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import styled from "styled-components";
 import { useSearchParams } from "react-router-dom";
+import { PAGE_COUNT } from "../constants";
 
 const StyledDiv = styled.div`
   display: flex;
@@ -35,8 +36,6 @@ const StyledPageCount = styled.div`
 const PageCount = styled.p`
   font-weight: bold;
 `;
-
-const PAGE_COUNT = 5;
 
 function Pagination({ pages }) {
   const [searchParams, setSearchParams] = useSearchParams();

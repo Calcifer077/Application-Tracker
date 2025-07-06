@@ -1,8 +1,7 @@
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { getApplications } from "../services/apiApplications";
 import { useSearchParams } from "react-router-dom";
-
-const PAGE_COUNT = 5;
+import { PAGE_COUNT } from "../constants";
 
 export function useApplications() {
   const queryClient = useQueryClient();

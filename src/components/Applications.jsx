@@ -5,6 +5,7 @@ import { useApplications } from "./useApplications";
 import SpinnerMini from "../ui/SpinnerMini";
 import ApplicationOperations from "./ApplicationOperations";
 import Pagination from "../ui/Pagination";
+import Menus from "../ui/Menus";
 
 const StyledMainDiv = styled.div`
   padding: 20px;
@@ -42,26 +43,25 @@ function Applications() {
         {/* Add filtering and sorting feature */}
         <ApplicationOperations />
       </StyledFlexDiv>
-
       <ApplicationRow />
-
       {isLoading && <SpinnerMini />}
-
       {!isLoading && !applications && <p>No applications were found!</p>}
 
-      {!isLoading &&
-        applications &&
-        applications.map((application) => (
-          <ApplicationDetails
-            id={application.id}
-            company={application.company}
-            platform={application.platform}
-            status={application.status}
-            notes={application.notes}
-            date={application.date_applied}
-            key={application.id}
-          />
-        ))}
+      {!isLoading && applications && (
+        <Menus>
+          {applications.map((application) => (
+            <ApplicationDetails
+              id={application.id}
+              company={application.company}
+              platform={application.platform}
+              status={application.status}
+              notes={application.notes}
+              date={application.date_applied}
+              key={application.id}
+            />
+          ))}
+        </Menus>
+      )}
 
       {!isLoading && applications && <Pagination pages={count} />}
     </StyledMainDiv>

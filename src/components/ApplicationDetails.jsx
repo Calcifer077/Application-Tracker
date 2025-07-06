@@ -1,7 +1,13 @@
-import { MdOutlineDateRange } from "react-icons/md";
+import { MdDelete, MdEdit, MdOutlineDateRange } from "react-icons/md";
 import { SlOptionsVertical } from "react-icons/sl";
 import DropdownApplicationStatus from "./DropdownApplicationStatus";
 import styled from "styled-components";
+
+import { useDeleteApplication } from "./useDeleteApplication";
+
+import Modal from "../ui/Modal";
+import Menus from "../ui/Menus";
+import ConfirmDelete from "../ui/ConfirmDelete";
 
 const StyledDiv = styled.div`
   padding: 20px;
@@ -40,6 +46,9 @@ const IconButton = styled.span`
 `;
 
 function ApplicationDetails({ id, company, platform, status, date, notes }) {
+  // const [isOpenModal, setIsOpenModal] = useState();
+  const { isLoading, deleteApplication } = useDeleteApplication();
+
   return (
     <StyledDiv>
       <Cell>{id}</Cell>
@@ -62,9 +71,44 @@ function ApplicationDetails({ id, company, platform, status, date, notes }) {
         {date}
       </Cell>
       <Cell>{notes}</Cell>
+
+      {/* <Modal>
+        <Modal.Open opens="application-options">
+          <IconButton>
+            <SlOptionsVertical />
+          </IconButton>
+        </Modal.Open>
+        <Modal.Window name="application-options">Some data</Modal.Window>
+      </Modal> */}
+
+      <Modal>
+        <Menus.Menu>
+          {/* This can be used to open or close the menu */}
+          {/* 'id' tells for which application to open */}
+          <Menus.Toggle id={id} />
+
+          {/* Will contain a list of buttons */}
+          <Menus.List id={id}>
+            <Modal.Open opens="delete-booking">
+              <Menus.Button icon={<MdDelete />}>Delete</Menus.Button>
+            </Modal.Open>
+          </Menus.List>
+        </Menus.Menu>
+
+        <Modal.Window name="delete-booking">
+          <ConfirmDelete
+            resourceName="application"
+            disabled={isLoading}
+            onConfirm={() => deleteApplication(id)}
+          />
+        </Modal.Window>
+      </Modal>
+      {/* {isOpenModal && (
+        <Modal onClose={() => setIsOpenModal(false)}>Some data</Modal>
+      )}
       <IconButton>
-        <SlOptionsVertical />
-      </IconButton>
+        <SlOptionsVertical onClick={() => setIsOpenModal((show) => !show)} />
+      </IconButton> */}
     </StyledDiv>
   );
 }

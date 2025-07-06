@@ -1,6 +1,5 @@
 import supabase from "./supabase";
-
-const PAGE_COUNT = 5;
+import { PAGE_COUNT } from "../constants";
 
 export async function getApplications({ filter, sort, page }) {
   let query = supabase.from("Applications").select("*", { count: "exact" });
@@ -41,7 +40,6 @@ export async function createApplication(application) {
     throw new Error("Your applicatoin could not be saved. Please try again");
   }
 
-  console.log(data);
   return data;
 }
 
@@ -52,12 +50,20 @@ export async function updateApplicationStatus(applicationId, status) {
     .eq("id", applicationId)
     .select();
 
-  console.log(applicationId, status);
   if (error) {
     throw new Error("Your application could not be updated. Please try again");
   }
 
-  console.log(updatedApplication);
-
   return updatedApplication;
+}
+
+export async function deleteApplication(applicationId) {
+  const { error } = await supabase
+    .from("Applications")
+    .delete()
+    .eq("id", applicationId);
+
+  if (error) {
+    throw new Error("Your application could not be deleted. Please try again");
+  }
 }

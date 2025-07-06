@@ -10,8 +10,14 @@
 
   --color-main-text-color: #212529;
   --color-text-color: #343a40;
+  --color-light-gray: #868e96;
+  --color-list-button: #ced4da;
+
+  --color-modal-button-hover: #ced4da;
 
   --color-border: #868e96;
+
+  --color-list-color: #e9ecef;
 
   --color-button-text-normal: #f1f3f5;
   --color-button-text-hover: #f8f9fa;
