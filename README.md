@@ -1,12 +1,40 @@
-# React + Vite
+# 📋 Application Tracker
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A web application that helps users track and manage their job or internship applications in one place.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🛠 Tools Used
 
-## Expanding the ESLint configuration
+- **React** – Frontend framework  
+- **Supabase** – Backend services (auth, database, APIs)  
+- **React Icons** – Icons and UI visual aids  
+- **React Hot Toast** – Toast notifications  
+- **Styled Components** – For scoped component-level CSS styling
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 🚀 How to Run the Application
+
+1. Create a file named `constants.js` inside the `src` directory.
+2. Add the following content to it:
+
+```js
+export const PAGE_COUNT = 'Used for pagination';
+export const SUPABASE_URL = 'Uses supabase';
+export const SUPABASE_KEY = 'Uses supabase';
+```
+3. Install dependencies and start the development server:
+```bash
+npm install
+npm run dev
+```
+## 📸 Screenshots
+![View of adding a application](./screenshots/add-applications.png)
+![View of all applications](./screenshots/applications.png)
+
+## ✅ Features
+- **Add and track** applications with fields like company name, status, date, and platform.
+- **Filter** by response status (Pending, Rejected, Selected, etc.)
+- **Sort** applications by date.
+- **Delete** application records easily.
